@@ -10,6 +10,7 @@ import About from "./pages/about";
 import Blogs from "./pages/blogs";
 import SignUp from "./pages/signup";
 import Contact from "./pages/contact";
+import DesignerLinks from "./pages/designer";
 import PageFramework from "./pages/framework";
  
 function App() {
@@ -31,6 +32,9 @@ function App() {
                 <Route
                     path="/sign-up"
                     element={<PageFramework component={<SignUp/>} />} />
+                <Route
+                    path="/designer-links"
+                    element={<PageFramework component={<DesignerLinks/>} />} />
             </Routes>
         </Router>
     );
