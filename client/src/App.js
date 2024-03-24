@@ -12,6 +12,7 @@ import SignUp from "./pages/signup";
 import Contact from "./pages/contact";
 import DesignerLinks from "./pages/designer";
 import PageFramework from "./pages/framework";
+import ProductPage from "./pages/productpage";
  
 function App() {
     return (
@@ -35,6 +36,9 @@ function App() {
                 <Route
                     path="/designer-links"
                     element={<PageFramework component={<DesignerLinks/>} />} />
+                <Route
+                    path="/productpage"
+                    element={<PageFramework component={<ProductPage />} />} />
             </Routes>
         </Router>
     );
