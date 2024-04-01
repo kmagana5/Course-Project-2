@@ -23,6 +23,8 @@ const ProductPage = () => {
         <div style={{ marginLeft: "10px" }}>
             <h2>3D House Product Sample</h2>
             <p>{product.description}</p>
+            <p>By: HackSmith Industries - <a href="https://www.hacksmith.com/" target="_blank">HackSmith Industries Page</a> </p>
+            <br></br>
             <button style={{ marginTop: "10px" }}>Add to Cart</button>
         </div>
     </div>

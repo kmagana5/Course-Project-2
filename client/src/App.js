@@ -10,7 +10,6 @@ import About from "./pages/about";
 import Blogs from "./pages/blogs";
 import SignUp from "./pages/signup";
 import Contact from "./pages/contact";
-import DesignerLinks from "./pages/designer";
 import PageFramework from "./pages/framework";
 import ProductPage from "./pages/productpage";
  
@@ -33,9 +32,6 @@ function App() {
                 <Route
                     path="/sign-up"
                     element={<PageFramework component={<SignUp/>} />} />
-                <Route
-                    path="/designer-links"
-                    element={<PageFramework component={<DesignerLinks/>} />} />
                 <Route
                     path="/productpage"
                     element={<PageFramework component={<ProductPage />} />} />
