@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import Rating from "../components/Rating";
+import "../styles/Rating.css";
 import axios from 'axios';
 
 const ProductPage = () => {
     const [showNotification, setShowNotification] = useState(false);
 
+
     function onSubmit() {
         const cart = {
             user_id: 1,
+            designer: 'HackSmith Industries',
             product_id: 'HouseRandom',
             quantity: 1,
-            total_cost: 2500.00,
+            total_cost: 2500,
             tags: ['house']
         };
         console.log(cart);
@@ -33,7 +37,9 @@ const ProductPage = () => {
                 <div style={{ marginLeft: "10px" }}>
                     <h2>3D House Product Sample</h2>
                     <p> By: <a href="https://www.hacksmith.com/" target="_blank">HackSmith Industries Page</a> </p>
+                    <Rating></Rating>
                     <br></br>
+                    <div className="pricetag">$2500</div>
                     <button className="button" onClick={onSubmit}>Add to Cart</button>
                 </div>
             </div>
