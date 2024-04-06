@@ -9,13 +9,15 @@ const ProductPage = () => {
             user_id: 1,
             product_id: 'HouseRandom',
             quantity: 1,
-            total_cost: 2500.00
+            total_cost: 2500.00,
+            tags: ['house']
         };
+        console.log(cart);
 
         axios.post('http://localhost:5000/addCart/add', cart)
             .then(res => {
                 console.log(res.data);
-                setShowNotification(true); // Show notification on successful addition to cart
+                setShowNotification(true); 
                 setTimeout(() => setShowNotification(false), 3000); // Hide notification after 3 seconds
             });
     }

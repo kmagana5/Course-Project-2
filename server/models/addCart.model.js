@@ -7,6 +7,7 @@ const cartSchema = new Schema({
   product_id: {type: String, required:true},
   quantity: {type:Number, required:true},
   total_cost: { type: Number, required: true },
+  tags: [{ type: String, required: true }], // optional array of strings for tagging items in the cart
 
   
 }, {
