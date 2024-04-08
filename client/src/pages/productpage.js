@@ -90,13 +90,13 @@ const ProductPage = () => {
                     
                     </p>
 
-                    <p>Number of Baths: <input style={{width:"15%"}} type="number" value={bath} onChange={(e) => setBath(e.target.value)}/>
+                    <p>Number of Baths: <input style={{width:"15%"}} type="number" value={bath} readOnly/>
                     <button onClick={decrementBath}>-</button>
                     <button onClick={incrementBath}>+</button>
                     
                     </p>
 
-                    <p>Quantity: <input style={{width:"15%"}} type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
+                    <p>Quantity: <input style={{width:"15%"}} type="number" value={quantity} readOnly/>
                     <button onClick={decrementQuant}>-</button>
                     <button onClick={incrementQuant}>+</button>
                     
