@@ -106,17 +106,22 @@ const Structure = () => {
                     <Rating></Rating>
                     <br></br>
                     <div className="pricetag">${structure.price}</div>
-                    <p>Number of Beds: <input style={{width:"15%"}} type="number" value={bed} readOnly/>
-                    <button onClick={decrementBed}>-</button>
-                    <button onClick={incrementBed}>+</button>
-                    
+                    {structure.numBeds && ( // Check if num_beds exists
+                    <p>
+                        Number of Beds:{" "}
+                        <input style={{ width: "15%" }} type="number" value={bed} readOnly />
+                        <button onClick={decrementBed}>-</button>
+                        <button onClick={incrementBed}>+</button>
                     </p>
-
-                    <p>Number of Baths: <input style={{width:"15%"}} type="number" value={bath} readOnly/>
-                    <button onClick={decrementBath}>-</button>
-                    <button onClick={incrementBath}>+</button>
-                    
+                )}
+                {structure.numBaths && ( // Check if num_baths exists
+                    <p>
+                        Number of Baths:{" "}
+                        <input style={{ width: "15%" }} type="number" value={bath} readOnly />
+                        <button onClick={decrementBath}>-</button>
+                        <button onClick={incrementBath}>+</button>
                     </p>
+                )}
 
                     <p>Quantity: <input style={{width:"15%"}} type="number" value={quantity} readOnly/>
                     <button onClick={decrementQuant}>-</button>
