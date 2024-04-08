@@ -22,6 +22,18 @@ mongoose.connect('mongodb://localhost:27017/CourseProject', {
 
 const usersRouter = require('./routes/users');
 const cartRouter = require ('./routes/addCart');
+const getStructuresRoute = require('./routes/getStructures');
+const getStructureByIdRoute = require('./routes/getStructureById');
+const createStructureRoute = require('./routes/createStructure');
+const updateStructureRoute = require('./routes/updateStructure');
+const deleteStructureRoute = require('./routes/deleteStructure');
+
+// Use routes
+app.use('/api/structures', getStructuresRoute);
+app.use('/api/structure', getStructureByIdRoute);
+app.use('/api/structures', createStructureRoute);
+app.use('/api/structures', updateStructureRoute);
+app.use('/api/structures', deleteStructureRoute);
 
 app.use('/users', usersRouter);
 app.use('/addCart', cartRouter);

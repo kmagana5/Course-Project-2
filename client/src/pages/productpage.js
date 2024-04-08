@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import Rating from "../components/Rating";
-import "../styles/Rating.css";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import { useParams } from "react-router-dom"; 
+import Rating from "../components/Rating";
 
 const ProductPage = () => {
     const [showNotification, setShowNotification] = useState(false);
-
+    const [structure, setStructure] = useState(null);
+    const { id } = useParams();
 
     function onSubmit() {
         const cart = {
             user_id: 1,
-            designer: 'HackSmith Industries',
             product_id: 'HouseRandom',
             quantity: 1,
-            total_cost: 2500,
+            total_cost: 2500.00,
             tags: ['house']
         };
         console.log(cart);
@@ -25,6 +25,16 @@ const ProductPage = () => {
                 setTimeout(() => setShowNotification(false), 3000); // Hide notification after 3 seconds
             });
     }
+    useEffect(() => {
+        axios.get(`http://localhost:5000/api/structures/${id}`)
+            .then(res => {
+                console.log(res.data);
+                setStructure(res.data);
+            })
+            .catch(error => {
+                console.error('Error fetching structure data:', error);
+            });
+    }, [id]);
 
     return (
         <div style={{ marginLeft: "10px" }}>
@@ -35,11 +45,9 @@ const ProductPage = () => {
                     <h2>From the Designer</h2>
                 </div>
                 <div style={{ marginLeft: "10px" }}>
-                    <h2>3D House Product Sample</h2>
+                {/* <h2>{structure.structure_name}</h2> */}
                     <p> By: <a href="https://www.hacksmith.com/" target="_blank">HackSmith Industries Page</a> </p>
                     <Rating></Rating>
-                    <br></br>
-                    <div className="pricetag">$2500</div>
                     <button className="button" onClick={onSubmit}>Add to Cart</button>
                 </div>
             </div>

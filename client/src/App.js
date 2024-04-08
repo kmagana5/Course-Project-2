@@ -12,6 +12,7 @@ import SignUp from "./pages/signup";
 import Contact from "./pages/contact";
 import PageFramework from "./pages/framework";
 import ProductPage from "./pages/productpage";
+import Products from "./pages/productselectionpage";
 
  
 function App() {
@@ -34,8 +35,15 @@ function App() {
                     path="/sign-up"
                     element={<PageFramework component={<SignUp/>} />} />
                 <Route
+                    path="/productselectionpage"
+                    element={<PageFramework component={<Products/>} />} />
+                <Route
                     path="/productpage"
                     element={<PageFramework component={<ProductPage />} />} />
+                <Route
+                    path="/product/:structure_id"
+                    element={<PageFramework component={<ProductPage />} />}
+                />
             </Routes>
         </Router>
     );
