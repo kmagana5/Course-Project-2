@@ -14,6 +14,8 @@ const ProductPage = () => {
 
     const [bed, setBed] = useState(1);
 
+    const cost = 2500;
+
     const incrementBed = () => {
       setBed(prevNumber => prevNumber + 1);
     };
@@ -58,7 +60,7 @@ const ProductPage = () => {
             numBed:convertBed,
             numBath: convertBath,
             q: convertQuantity,
-            total_cost: 2500,
+            total_cost: cost * convertQuantity,
             tags: ['house']
         };
         console.log(cart);
