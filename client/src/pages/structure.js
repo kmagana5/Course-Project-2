@@ -3,11 +3,11 @@ import axios from 'axios';
 import { useParams } from "react-router-dom"; 
 import Rating from "../components/Rating";
 
-const ProductPage = () => {
+const Structure = () => {
     const [showNotification, setShowNotification] = useState(false);
     const [structure, setStructure] = useState(null);
-    const { id } = useParams();
-
+    const { structure_id } = useParams();
+    console.log("Bruh:...", structure_id);
     function onSubmit() {
         const cart = {
             user_id: 1,
@@ -26,29 +26,38 @@ const ProductPage = () => {
             });
     }
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/structures/${id}`)
+        async function fetchData() {
+            axios.get(`http://localhost:5000/api/structures/${structure_id}`)
             .then(res => {
-                console.log(res.data);
+                console.log("Hello" , res.data);
                 setStructure(res.data);
             })
             .catch(error => {
                 console.error('Error fetching structure data:', error);
             });
-    }, [id]);
+        }
+
+        fetchData();
+    }, [structure_id]);
+
+    if(structure === null) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div style={{ marginLeft: "10px" }}>
             
-            <h1>ProductPage</h1>
+            <h1>Structure</h1>
             <div style={{ display: "flex", flexDirection: "row" }}>
                 <div>
-                    <img src="/house.jpg" alt="Product Image" style={{ padding: "50px" }} />
+                    <img src={structure.image_urls} alt="Product Image" style={{ padding: "50px", height: "500px"}} />
                     <h2>From the Designer</h2>
                 </div>
                 <div style={{ marginLeft: "10px" }}>
-                {/* <h2>{structure.structure_name}</h2> */}
+                <h2>{ structure.structure_name }</h2>
                     <p> By: <a href="https://www.hacksmith.com/" target="_blank">HackSmith Industries Page</a> </p>
                     <Rating></Rating>
+                    <div className="pricetag"> ${structure.price}</div>
                     <button className="button" onClick={onSubmit}>Add to Cart</button>
                 </div>
             </div>
@@ -77,4 +86,4 @@ const ProductPage = () => {
     )
 };
 
-export default ProductPage;
+export default Structure;

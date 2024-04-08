@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const structureSchema = new mongoose.Schema({
+    structure_id: { 
+        type: Number, 
+        required: true 
+    }, 
     structure_type: {
         type: String,
         required: true
