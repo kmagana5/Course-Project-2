@@ -20,6 +20,9 @@ const Navbar = () => {
                 <NavLink to="/sign-up" activeStyle>
                     Sign Up
                 </NavLink>
+                <NavLink to="/structureselectionpage" activeStyle>
+                    Structures
+                </NavLink>
                 <NavLink to="/productpage" activeStyle>
                     Product Page
                 </NavLink>
@@ -27,5 +30,4 @@ const Navbar = () => {
         </Nav>
     );
 };
-
 export default Navbar;
