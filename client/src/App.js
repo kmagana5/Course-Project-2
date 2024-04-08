@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
 import Navbar from "./components/Navbar";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+
 
 // Pages
 import Home from "./pages";
@@ -15,7 +16,10 @@ import ProductPage from "./pages/productpage";
 
  
 function App() {
+
+  
     return (
+        
         <Router>
             <Routes>
                 <Route 
@@ -38,6 +42,8 @@ function App() {
                     element={<PageFramework component={<ProductPage />} />} />
             </Routes>
         </Router>
+
+        
     );
 }
  

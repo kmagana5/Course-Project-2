@@ -11,6 +11,9 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors()); // Enable CORS for all routes
 
+const bodyParser = require("body-parser")
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/CourseProject', {
@@ -20,10 +23,8 @@ mongoose.connect('mongodb://localhost:27017/CourseProject', {
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error('MongoDB connection error:', err));
 
-const usersRouter = require('./routes/users');
 const cartRouter = require ('./routes/addCart');
 
-app.use('/users', usersRouter);
 app.use('/addCart', cartRouter);
 
 // Start the server

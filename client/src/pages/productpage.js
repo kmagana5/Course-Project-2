@@ -6,17 +6,61 @@ import axios from 'axios';
 const ProductPage = () => {
     const [showNotification, setShowNotification] = useState(false);
 
+    const [quantity, setQuantity] = useState(1);
+   
+    const [bath, setBath] = useState(1);
+
+    const [bed, setBed] = useState(1);
+
+    const incrementBed = () => {
+      setBed(prevNumber => prevNumber + 1);
+    };
+  
+    const decrementBed = () => {
+      if (bed > 1) {
+        setBed(prevNumber => prevNumber - 1);
+      }
+    };
+
+    const incrementBath = () => {
+        setBath(prevNumber => prevNumber + 1);
+      };
+    
+      const decrementBath = () => {
+        if (bath > 1) {
+          setBath(prevNumber => prevNumber - 1);
+        }
+      };
+
+      const incrementQuant = () => {
+        setQuantity(prevNumber => prevNumber + 1);
+      };
+    
+      const decrementQuant = () => {
+        if (setQuantity > 1) {
+          setBed(prevNumber => prevNumber - 1);
+        }
+      };
 
     function onSubmit() {
+      
+
+        const convertQuantity = parseInt(quantity,10);
+        const convertBed = parseInt(bed,10);
+        const convertBath = parseInt(bath,10);
+
         const cart = {
             user_id: 1,
             designer: 'HackSmith Industries',
             product_id: 'HouseRandom',
-            quantity: 1,
+            numBed:convertBed,
+            numBath: convertBath,
+            q: convertQuantity,
             total_cost: 2500,
             tags: ['house']
         };
         console.log(cart);
+
 
         axios.post('http://localhost:5000/addCart/add', cart)
             .then(res => {
@@ -40,6 +84,24 @@ const ProductPage = () => {
                     <Rating></Rating>
                     <br></br>
                     <div className="pricetag">$2500</div>
+                    <p>Number of Beds: <input style={{width:"15%"}} type="number" value={bed} readOnly/>
+                    <button onClick={decrementBed}>-</button>
+                    <button onClick={incrementBed}>+</button>
+                    
+                    </p>
+
+                    <p>Number of Baths: <input style={{width:"15%"}} type="number" value={bath} onChange={(e) => setBath(e.target.value)}/>
+                    <button onClick={decrementBath}>-</button>
+                    <button onClick={incrementBath}>+</button>
+                    
+                    </p>
+
+                    <p>Quantity: <input style={{width:"15%"}} type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
+                    <button onClick={decrementQuant}>-</button>
+                    <button onClick={incrementQuant}>+</button>
+                    
+                    </p>
+
                     <button className="button" onClick={onSubmit}>Add to Cart</button>
                 </div>
             </div>

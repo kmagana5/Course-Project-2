@@ -12,11 +12,13 @@ router.route('/add').post((req, res) => {
   const designer = req.body.designer;
   const product_id = req.body.product_id;
   const total_cost = req.body.total_cost;
-  const quantity = req.body.quantity;
+  const numBed = req.body.numBed;
+  const numBath = req.body.numBath;
+  const q = req.body.q;
   const tags = req.body.tags;
 
 
-  const AddtoCart = new addCart({user_id,designer,product_id,total_cost,quantity,tags});
+  const AddtoCart = new addCart({user_id,designer,product_id,total_cost,numBed,numBath,q,tags});
 
   AddtoCart.save()
     .then(() => res.json('Item added to Cart!'))
