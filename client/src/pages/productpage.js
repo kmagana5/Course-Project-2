@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Rating from "../components/Rating";
 import "../styles/Rating.css";
+import ScrollMenu from "../components/ScrollMenu";
+import "../styles/ScrollMenu.css";
 import axios from 'axios';
 
 const ProductPage = () => {
@@ -112,6 +114,7 @@ const ProductPage = () => {
                 <h2>Home Features</h2>
                 <h2>Plan Details</h2>
                 <h2>Contractors in Your Area for this Design</h2>
+                <ScrollMenu></ScrollMenu>
                 <h2>Compatible 3D Printers</h2>
             </div>
             <div style={{ display: "flex" }}>
