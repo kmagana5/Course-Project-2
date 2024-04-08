@@ -61,6 +61,10 @@ const ProductPage = () => {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo eu diam sit amet semper. In aliquam faucibus sem, sed vestibulum nunc rhoncus a. In fringilla magna sit amet consequat congue. Mauris quis maximus eros. Aenean ultricies enim eu quam consequat tincidunt. Praesent luctus blandit quam nec condimentum. Suspendisse fermentum libero nulla, id mollis urna commodo quis. Donec velit nunc, semper et porttitor nec, feugiat in felis.</p>
                 </div>
             </div>
+            <div style={{display:"flex", flexDirection: "row"}}>
+                <h2>SIMILAR PRODUCT</h2>
+                
+            </div>
 
             {showNotification && (
                 <div className="notification">
