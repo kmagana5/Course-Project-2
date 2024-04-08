@@ -15,7 +15,7 @@ const structureSchema = new mongoose.Schema({
     },
     tags: {
         type: [String],
-        required: true
+        required: false
     },
     image_urls: {
         type: String,

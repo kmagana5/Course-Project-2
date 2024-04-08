@@ -16,6 +16,8 @@ const Structure = () => {
 
     const [bed, setBed] = useState(1);
 
+   
+
     const incrementBed = () => {
       setBed(prevNumber => prevNumber + 1);
     };
@@ -52,14 +54,13 @@ const Structure = () => {
         const convertBath = parseInt(bath,10);
 
         const cart = {
-            user_id: 1,
+            user_id: structure.user_id,
             designer: 'HackSmith Industries',
-            product_id: 'HouseRandom',
+            product_id: structure_id,
             numBed:convertBed,
             numBath: convertBath,
             q: convertQuantity,
-            total_cost: 2500,
-            tags: ['house']
+            total_cost: structure.price * convertQuantity,
         };
         console.log(cart);
 
@@ -91,21 +92,42 @@ const Structure = () => {
     }
 
     return (
-        <div style={{ marginLeft: "10px" }}>
 
+                    <div style={{ marginLeft: "10px" }}>
             <h1>Structure</h1>
             <div style={{ display: "flex", flexDirection: "row" }}>
                 <div>
-                    <img src={structure.image_urls} alt="Product Image" style={{ padding: "50px", height: "500px"}} />
+                    <img src={structure.image_urls} alt="Product Image" style={{ padding: "50px", height: "500px", maxWidth: "750px"}} />
                     <h2>From the Designer</h2>
                 </div>
                 <div style={{ marginLeft: "10px" }}>
-                <h2>{ structure.structure_name }</h2>
+                    <h2>{ structure.structure_name }</h2>
                     <p> By: <a href="https://www.hacksmith.com/" target="_blank">HackSmith Industries Page</a> </p>
                     <Rating></Rating>
-                    <div className="pricetag"> ${structure.price}</div>
+                    <br></br>
+                    <div className="pricetag">${structure.price}</div>
+                    <p>Number of Beds: <input style={{width:"15%"}} type="number" value={bed} readOnly/>
+                    <button onClick={decrementBed}>-</button>
+                    <button onClick={incrementBed}>+</button>
+                    
+                    </p>
+
+                    <p>Number of Baths: <input style={{width:"15%"}} type="number" value={bath} readOnly/>
+                    <button onClick={decrementBath}>-</button>
+                    <button onClick={incrementBath}>+</button>
+                    
+                    </p>
+
+                    <p>Quantity: <input style={{width:"15%"}} type="number" value={quantity} readOnly/>
+                    <button onClick={decrementQuant}>-</button>
+                    <button onClick={incrementQuant}>+</button>
+                    
+                    </p>
+
                     <button className="button" onClick={onSubmit}>Add to Cart</button>
                 </div>
+
+                
             </div>
             <div style={{ width: "50%" }}>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo eu diam sit amet semper. In aliquam faucibus sem, sed vestibulum nunc rhoncus a. In fringilla magna sit amet consequat congue. Mauris quis maximus eros.

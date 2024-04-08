@@ -61,7 +61,6 @@ const ProductPage = () => {
             numBath: convertBath,
             q: convertQuantity,
             total_cost: cost * convertQuantity,
-            tags: ['house']
         };
         console.log(cart);
 
