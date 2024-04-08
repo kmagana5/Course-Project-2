@@ -1,20 +1,9 @@
-<<<<<<< Updated upstream
-import React from "react";
-// import { addToCart } from "../services/api";
- 
-const ProductPage = () => {
-    const product = {
-        _id: 1,
-        name: "3D House Sample",
-        product_image: "/house.jpg",
-        description: "This is a 3D House"
-    };
-=======
 import React, { useState } from "react";
 import Rating from "../components/Rating";
 import "../styles/Rating.css";
+import ScrollMenu from "../components/ScrollMenu";
+import "../styles/ScrollMenu.css";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 const ProductPage = () => {
     const [showNotification, setShowNotification] = useState(false);
@@ -25,7 +14,6 @@ const ProductPage = () => {
             user_id: 1,
             designer: 'HackSmith Industries',
             product_id: 'HouseRandom',
-            image: "/house.jpg",
             quantity: 1,
             total_cost: 2500,
             tags: ['house']
@@ -39,20 +27,8 @@ const ProductPage = () => {
                 setTimeout(() => setShowNotification(false), 3000); // Hide notification after 3 seconds
             });
     }
->>>>>>> Stashed changes
 
-    // const handleAddToCart = ()  => {
-    //     addToCart(product._id);
-    // };
     return (
-<<<<<<< Updated upstream
-        <div>
-    <h1>ProductPage</h1>
-    <div style={{ display: "flex", flexDirection: "row" }}>
-        <div>
-            <img src={product.product_image} alt="Product Image"/>
-            <h2>From the Designer</h2>
-=======
         <div style={{ marginLeft: "10px" }}>
             <h1>ProductPage</h1>
             <div style={{ display: "flex", flexDirection: "row" }}>
@@ -76,6 +52,7 @@ const ProductPage = () => {
                 <h2>Home Features</h2>
                 <h2>Plan Details</h2>
                 <h2>Contractors in Your Area for this Design</h2>
+                <ScrollMenu></ScrollMenu>
                 <h2>Compatible 3D Printers</h2>
             </div>
             <div style={{ display: "flex" }}>
@@ -84,45 +61,14 @@ const ProductPage = () => {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo eu diam sit amet semper. In aliquam faucibus sem, sed vestibulum nunc rhoncus a. In fringilla magna sit amet consequat congue. Mauris quis maximus eros. Aenean ultricies enim eu quam consequat tincidunt. Praesent luctus blandit quam nec condimentum. Suspendisse fermentum libero nulla, id mollis urna commodo quis. Donec velit nunc, semper et porttitor nec, feugiat in felis.</p>
                 </div>
             </div>
-            <div class="title">SIMILAR PRODUCTS</div>
 
             {showNotification && (
                 <div className="notification">
                     Item added to cart!
                 </div>
             )}
->>>>>>> Stashed changes
         </div>
-        <div style={{ marginLeft: "10px" }}>
-            <h2>3D House Product Sample</h2>
-            <p>{product.description}</p>
-            <p>By: HackSmith Industries - <a href="https://www.hacksmith.com/" target="_blank">HackSmith Industries Page</a> </p>
-            <br></br>
-            <button style={{ marginTop: "10px" }}>Add to Cart</button>
-        </div>
-    </div>
-    <div style={{width: "50%"}}>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo eu diam sit amet semper. In aliquam faucibus sem, sed vestibulum nunc rhoncus a. In fringilla magna sit amet consequat congue. Mauris quis maximus eros.
-             Aenean ultricies enim eu quam consequat tincidunt. Praesent luctus blandit quam nec condimentum. 
-             Suspendisse fermentum libero nulla, id mollis urna commodo quis. Donec velit nunc, semper et porttitor nec, feugiat in felis.</p>
-        <h2>Home Features</h2>
-        <h2>Plan Details</h2>
-        <h2>Contractors in Your Area for this Design</h2>
-        <h2>Compatible 3D Printers</h2>
-    </div>
-    <div style={{display:"flex"}}>
-        <div style={{width:"25%"}}>
-            <h2>Virtual Walkthrough</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo eu diam sit amet semper. In aliquam faucibus sem, sed vestibulum nunc rhoncus a. In fringilla magna sit amet consequat congue. Mauris quis maximus eros. Aenean ultricies enim eu quam consequat tincidunt. Praesent luctus blandit quam nec condimentum. Suspendisse fermentum libero nulla, id mollis urna commodo quis. Donec velit nunc, semper et porttitor nec, feugiat in felis.</p>
-        </div>
-        <img src={product.product_image} alt="Product Image" style={{padding:"50px"}}/>
-
-    </div>
-    </div>
-    
-
-        
-    );
+    )
 };
- 
+
 export default ProductPage;
