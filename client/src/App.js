@@ -1,9 +1,7 @@
 import React from "react";
-
 // Components
 import Navbar from "./components/Navbar";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-
 // Pages
 import Home from "./pages";
 import About from "./pages/about";
@@ -12,8 +10,10 @@ import SignUp from "./pages/signup";
 import Contact from "./pages/contact";
 import PageFramework from "./pages/framework";
 import ProductPage from "./pages/productpage";
+import StructureSelectionPage from "./pages/structureselectionpage";
+import Structure from "./pages/structure";
 
- 
+
 function App() {
     return (
         <Router>
@@ -34,8 +34,15 @@ function App() {
                     path="/sign-up"
                     element={<PageFramework component={<SignUp/>} />} />
                 <Route
+                    path="/structureselectionpage"
+                    element={<PageFramework component={<StructureSelectionPage/>} />} />
+                <Route
                     path="/productpage"
                     element={<PageFramework component={<ProductPage />} />} />
+                <Route
+                    path="/structure/:structure_id"
+                    element={<PageFramework component={<Structure />} />}
+                />
             </Routes>
         </Router>
     );
