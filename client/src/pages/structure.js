@@ -43,8 +43,8 @@ const Structure = () => {
       };
     
       const decrementQuant = () => {
-        if (setQuantity > 1) {
-          setBed(prevNumber => prevNumber - 1);
+        if (quantity > 1) {
+          setQuantity(prevNumber => prevNumber - 1);
         }
       };
     console.log("Bruh:...", structure_id);
