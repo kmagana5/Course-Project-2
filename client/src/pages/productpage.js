@@ -16,6 +16,12 @@ const ProductPage = () => {
 
     const cost = 2500;
 
+    const [similarProducts, setSimilarProducts] = useState([]);
+
+    useEffect(() => {
+      fetchSimilarProducts();
+    }, []);
+
     const incrementBed = () => {
       setBed(prevNumber => prevNumber + 1);
     };
@@ -46,6 +52,17 @@ const ProductPage = () => {
         }
       };
 
+      const fetchSimilarProducts = () => {
+        fetch("products.json")
+            .then(response => response.json())
+            .then(data => {
+                setSimilarProducts(data);
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the similar products:', error);
+            });
+      };
+
     function onSubmit() {
       
 
@@ -63,7 +80,6 @@ const ProductPage = () => {
             total_cost: cost * convertQuantity,
         };
         console.log(cart);
-
 
         axios.post('http://localhost:5000/addCart/add', cart)
             .then(res => {
@@ -124,9 +140,15 @@ const ProductPage = () => {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo eu diam sit amet semper. In aliquam faucibus sem, sed vestibulum nunc rhoncus a. In fringilla magna sit amet consequat congue. Mauris quis maximus eros. Aenean ultricies enim eu quam consequat tincidunt. Praesent luctus blandit quam nec condimentum. Suspendisse fermentum libero nulla, id mollis urna commodo quis. Donec velit nunc, semper et porttitor nec, feugiat in felis.</p>
                 </div>
             </div>
-            <div style={{display:"flex", flexDirection: "row"}}>
-                <h2>SIMILAR PRODUCT</h2>
-                
+            <div style={{display: "flex", flexDirection: "row"}}>
+              <h2>SIMILAR PRODUCTS</h2>
+              {similarProducts.map(product => (
+                <div key={product.user_id} style={{ margin: "0 10px" }}>
+                <img src={product.image} alt="Similar Product" style={{ width: "100px", height: "100px" }} />
+                <p>{product.designer}</p>
+                <p>{product.cost}</p>
+                </div>
+              ))}
             </div>
 
             {showNotification && (

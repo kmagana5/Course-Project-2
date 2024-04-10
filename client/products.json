@@ -1,0 +1,25 @@
+[
+    {
+        "user_id": 1,
+        "designer": "HackSmith Industries",
+        "product_id": "HouseRandom",
+        "cost": 2500,
+        "image": "house.jpg"
+    },
+
+    {
+        "user_id": 2,
+        "designer": "A Industries",
+        "product_id": "ChairRandom",
+        "cost": 200,
+        "image": "chair.jpg"
+    },
+
+    {
+        "user_id": 3,
+        "designer": "B Industries",
+        "product_id": "TableRandom",
+        "cost": 1000,
+        "image": "table.jpg"
+    }
+]
