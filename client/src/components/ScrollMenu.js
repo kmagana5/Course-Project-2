@@ -56,6 +56,10 @@ const ScrollMenu = () => {
             <div class="boxes">
                 <a href="https://ecobuildplus.com/" target="_blank">EcoSolutions Builders</a>
             </div>
+
+            <div class="boxes">
+                <a href="http://localhost:3001/" target="_blank">Look for Contractors</a>
+            </div>
            
         </div>
 
