@@ -28,9 +28,22 @@ const structureSchema = new mongoose.Schema({
     structure_name: {
         type: String,
         required: true
-    }
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    designer: {
+        type: String,
+        required: true
+    },
+    designer_link: {
+        type: String,
+        required: true
+    } 
+
 });
 
-const Structure = mongoose.model('Structure', structureSchema);
+const Structure = mongoose.model('Structures', structureSchema, 'Structures');
 
 module.exports = Structure;

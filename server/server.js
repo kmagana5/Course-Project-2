@@ -30,7 +30,7 @@ app.use('/addCart', cartRouter);
 const structureRoutes = require('./routes/structureRoutes');
 
 // Use routes
-app.use("/api/structures", structureRoutes);
+app.use("/api/Structures", structureRoutes);
 
 // Start the server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

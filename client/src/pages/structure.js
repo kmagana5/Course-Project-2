@@ -74,7 +74,7 @@ const Structure = () => {
     }
     useEffect(() => {
         async function fetchData() {
-            axios.get(`http://localhost:5000/api/structures/${structure_id}`)
+            axios.get(`http://localhost:5000/api/Structures/${structure_id}`)
             .then(res => {
                 console.log("Hello" , res.data);
                 setStructure(res.data);
@@ -98,11 +98,10 @@ const Structure = () => {
             <div style={{ display: "flex", flexDirection: "row" }}>
                 <div>
                     <img src={structure.image_urls} alt="Product Image" style={{ padding: "50px", height: "500px", maxWidth: "750px"}} />
-                    <h2>From the Designer</h2>
                 </div>
                 <div style={{ marginLeft: "10px" }}>
                     <h2>{ structure.structure_name }</h2>
-                    <p> By: <a href="https://www.hacksmith.com/" target="_blank">HackSmith Industries Page</a> </p>
+                    <p> By: <a href={structure.designer_link} target="_blank">{structure.designer}</a> </p>
                     <Rating></Rating>
                     <br></br>
                     <div className="pricetag">${structure.price}</div>
@@ -135,9 +134,8 @@ const Structure = () => {
                 
             </div>
             <div style={{ width: "50%" }}>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo eu diam sit amet semper. In aliquam faucibus sem, sed vestibulum nunc rhoncus a. In fringilla magna sit amet consequat congue. Mauris quis maximus eros.
-                     Aenean ultricies enim eu quam consequat tincidunt. Praesent luctus blandit quam nec condimentum.
-                     Suspendisse fermentum libero nulla, id mollis urna commodo quis. Donec velit nunc, semper et porttitor nec, feugiat in felis.</p>
+                <h2>From the Designer</h2>
+                <p>{structure.description}</p>
                 <h2>Home Features</h2>
                 <h2>Plan Details</h2>
                 <h2>Contractors in Your Area for this Design</h2>
