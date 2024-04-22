@@ -16,8 +16,6 @@ const ProductPage = () => {
 
     const cost = 2500;
 
-    const [similarProducts, setSimilarProducts] = useState([]);
-
     const incrementBed = () => {
       setBed(prevNumber => prevNumber + 1);
     };
@@ -46,16 +44,6 @@ const ProductPage = () => {
         if (setQuantity > 1) {
           setBed(prevNumber => prevNumber - 1);
         }
-      };
-
-      const fetchSimilarProducts = () => {
-        fetch("./CourseProject.Structures.json")
-            .then(response => response.json())
-            .then(data => { data.forEach(item => {console.log(item.structure_type)});
-            })
-            .catch(error => {
-                console.error('There was a problem fetching the similar products:', error);
-            });
       };
 
     function onSubmit() {
@@ -137,6 +125,7 @@ const ProductPage = () => {
             </div>
             <div style={{display: "flex", flexDirection: "row"}}>
               <h2>SIMILAR PRODUCTS</h2>
+              <script src="Test.js"></script>
             </div>
 
             {showNotification && (
