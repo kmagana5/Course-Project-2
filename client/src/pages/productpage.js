@@ -49,10 +49,9 @@ const ProductPage = () => {
       };
 
       const fetchSimilarProducts = () => {
-        fetch("products.json")
+        fetch("./CourseProject.Structures.json")
             .then(response => response.json())
-            .then(data => {
-                setSimilarProducts(data);
+            .then(data => { data.forEach(item => {console.log(item.structure_type)});
             })
             .catch(error => {
                 console.error('There was a problem fetching the similar products:', error);
