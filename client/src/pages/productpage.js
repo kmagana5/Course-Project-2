@@ -18,10 +18,6 @@ const ProductPage = () => {
 
     const [similarProducts, setSimilarProducts] = useState([]);
 
-    useEffect(() => {
-      fetchSimilarProducts();
-    }, []);
-
     const incrementBed = () => {
       setBed(prevNumber => prevNumber + 1);
     };
@@ -142,13 +138,6 @@ const ProductPage = () => {
             </div>
             <div style={{display: "flex", flexDirection: "row"}}>
               <h2>SIMILAR PRODUCTS</h2>
-              {similarProducts.map(product => (
-                <div key={product.user_id} style={{ margin: "0 10px" }}>
-                <img src={product.image} alt="Similar Product" style={{ width: "100px", height: "100px" }} />
-                <p>{product.designer}</p>
-                <p>{product.cost}</p>
-                </div>
-              ))}
             </div>
 
             {showNotification && (
