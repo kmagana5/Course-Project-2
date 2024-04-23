@@ -32,8 +32,32 @@ const getStructuresByTags = async (req, res) => {
         console.log("BIG ERROR:...", error);
     }
 };
+
+const getRelatedStructures = async (req, res) => {
+    const {structure_id, structure_type, tags} = req.body;
+
+    try {
+        const relatedStructures = await Structure.find({
+            structure_id: {$ne: structure_id}, structure_type: structure_type, tags: {$nin: ["trendy"], $in: tags}
+        });
+        const relatedStructuresByType = await Structure.find({
+            structure_id: {$ne: structure_id}, structure_type: structure_type, tags: {$nin: ["trendy"]}
+        });
+        const relatedStructuresByTags = await Structure.find({
+            structure_id: {$ne: structure_id}, tags: {$nin: ["trendy"], $in: tags}
+        })
+        const combinedRelatedStructures = [...relatedStructures, ...relatedStructuresByType, ...relatedStructuresByTags]
+        const uniqueRelatedStructures = Array.from(new Map(combinedRelatedStructures.map(item => [item['_id'].toString(), item])).values());
+
+        res.json(uniqueRelatedStructures);
+    } catch (error) {
+        res.status(500).json({message: "Error fetching related structures", error: error});
+    }
+};
+
 module.exports = {
     getAllStructures,
     getStructureById,
-    getStructuresByTags
+    getStructuresByTags,
+    getRelatedStructures
 };

@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const {getAllStructures, getStructureById, getStructuresByTags} = require('../controller/structureController')
+const {
+    getAllStructures,
+    getStructureById,
+    getStructuresByTags,
+    getRelatedStructures
+} = require('../controller/structureController')
 
 //@desc GET all structures from db
 //@route  GET /api/structures
@@ -20,5 +25,10 @@ router.get('/', getAllStructures);
 router.get('/:id', getStructureById);
 
 router.get('/tags/:tags', getStructuresByTags);
+
+// @desc Get related structures from the database
+// @route POST /api/structures/related
+// @access Public
+router.post('/related', getRelatedStructures);
 
 module.exports = router;

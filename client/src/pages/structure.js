@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import ScrollMenu from "../components/ScrollMenu";
 import "../styles/ScrollMenu.css";
-import { useParams } from "react-router-dom"; 
+import RelatedContent from "../components/RelatedContent";
+import "../styles/RelatedContent.css"
+import { useParams } from "react-router-dom";
 import Rating from "../components/Rating";
 
 const Structure = () => {
     const [showNotification, setShowNotification] = useState(false);
     const [structure, setStructure] = useState(null);
+    const [relatedStructures, setRelatedStructures] = useState([]);
     const { structure_id } = useParams();
 
     const [quantity, setQuantity] = useState(1);
@@ -87,6 +90,28 @@ const Structure = () => {
         fetchData();
     }, [structure_id]);
 
+    useEffect(() => {
+        if (!structure) return;
+
+        async function fetchRelatedStructures() {
+            console.log('structure_id:', structure_id)
+            axios.post(`http://localhost:5000/api/Structures/related`, {
+                structure_id: structure.structure_id,
+                structure_type: structure.structure_type,
+                tags: structure.tags
+            })
+                .then(res => {
+                    console.log("Related structures:", res.data);
+                    setRelatedStructures(res.data);
+                })
+                .catch(error => {
+                    console.error('Error fetching related structures:', error)
+                });
+        }
+
+        fetchRelatedStructures();
+    }, [structure]);
+
     if(structure === null) {
         return <div>Loading...</div>;
     }
@@ -148,6 +173,10 @@ const Structure = () => {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo eu diam sit amet semper. In aliquam faucibus sem, sed vestibulum nunc rhoncus a. In fringilla magna sit amet consequat congue. Mauris quis maximus eros. Aenean ultricies enim eu quam consequat tincidunt. Praesent luctus blandit quam nec condimentum. Suspendisse fermentum libero nulla, id mollis urna commodo quis. Donec velit nunc, semper et porttitor nec, feugiat in felis.</p>
                 </div>
             </div>
+
+            {relatedStructures.length > 0 && (
+                <RelatedContent category="Related Structures" products={relatedStructures} />
+            )}
 
             {showNotification && (
                 <div className="notification">
