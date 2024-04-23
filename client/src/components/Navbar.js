@@ -23,9 +23,6 @@ const Navbar = () => {
                 <NavLink to="/structureselectionpage" activeStyle>
                     Structures
                 </NavLink>
-                <NavLink to="/productpage" activeStyle>
-                    Product Page
-                </NavLink>
                 <NavLink to="/orders" activeStyle>
                     Orders
                 </NavLink>
