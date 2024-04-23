@@ -12,7 +12,7 @@ import PageFramework from "./pages/framework";
 import StructureSelectionPage from "./pages/structureselectionpage";
 import Structure from "./pages/structure";
 import OrdersPage from "./pages/OrdersPage";
-// import CheckoutPage from "./pages/CheckoutPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
     return (
@@ -47,6 +47,10 @@ function App() {
                 <Route
                     path="/orders"
                     element={<PageFramework component={<OrdersPage />} />} // Pass setCurrentPage function to OrdersPage
+                />
+                <Route
+                    path="/checkout"
+                    element={<PageFramework component={<CheckoutPage />} />}
                 />
             </Routes>
         </Router>

@@ -29,6 +29,7 @@ app.use('/addCart', cartRouter);
 
 const structureRoutes = require('./routes/structureRoutes');
 
+
 // Use routes
 app.use("/api/Structures", structureRoutes);
 
