@@ -1,0 +1,41 @@
+.container  
+{
+    background: whitesmoke; 
+    padding: 0.1rem;
+    margin: 1.5rem;
+    border-radius: 0.5px;
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.img-container img
+{
+    width: 80%;
+    display: block;
+}
+
+.img-container:hover
+{
+    cursor: zoom-in;
+}
+
+.img-container span
+{
+    z-index: 5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.6);
+    display: block;
+    padding: 0.5rem 1rem;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #eee;
+    text-align: center;
+}
+
+.img-container:hover span
+{
+    display: none;
+}

@@ -3,6 +3,7 @@ import Rating from "../components/Rating";
 import "../styles/Rating.css";
 import ScrollMenu from "../components/ScrollMenu";
 import "../styles/ScrollMenu.css";
+import "../styles/Zoom.css"
 import axios from 'axios';
 
 const ProductPage = () => {
@@ -47,7 +48,6 @@ const ProductPage = () => {
       };
 
     function onSubmit() {
-      
 
         const convertQuantity = parseInt(quantity,10);
         const convertBed = parseInt(bed,10);
@@ -72,12 +72,73 @@ const ProductPage = () => {
             });
     }
 
+    function onHover() {
+        const imgContElm = document.querySelector(".container");
+        const imgElm = document.querySelector(".img-container img");
+
+        if(imgContElm && imgElm)
+        {
+          const zoom = 200;
+
+          //Event Mouse Enter
+          imgContElm.addEventListener('mouseenter', function(){
+            imgElm.style.width = zoom + '%';
+          });
+      
+          //Event Mouse Leave
+          imgContElm.addEventListener('mouseleave', function(){
+            imgElm.style.width = '80%';
+            imgElm.style.top = '0';
+            imgElm.style.left = '0';
+          });
+
+          imgContElm.addEventListener('mousemove', function(mouseEvent){
+            let obj = imgContElm;
+            let obj_left = 0;
+            let obj_top = 0;
+            let xpos;
+            let ypos;
+
+            while(obj.offsetParent){
+              obj_left += obj.offsetLeft;
+              obj_top += obj.offsetTop;
+              obj = obj.offsetParent;
+            }
+            if(mouseEvent){
+              xpos = mouseEvent.pageX;
+              ypos = mouseEvent.pageY; 
+            }
+            else {
+              xpos = window.x + document.body.scrollLeft - 2;
+              ypos = window.y + document.body.scrollTop - 2;
+            }
+            xpos -= obj_left;
+            ypos -= obj_top;
+            const imgWidth = imgElm.clientWidth;
+            const imgHeight = imgElm.clientHeight;
+
+            imgElm.style.top = -(((imgHeight - this.clientHeight) * ypos) / this.clientHeight) + 'px';
+            imgElm.style.left = -(((imgHeight - this.clientHeight) * xpos) / this.clientHeight) + 'px';
+          });   
+
+        }
+        else{
+          console.error("One or both of the elements not found.");
+        }
+    }
+    onHover();
+    
+
     return (
         <div style={{ marginLeft: "10px" }}>
             <h1>ProductPage</h1>
             <div style={{ display: "flex", flexDirection: "row" }}>
                 <div>
-                    <img src="/house.jpg" alt="Product Image" style={{ padding: "50px" }} />
+                  <div className="container">
+                    <div className="img-container">
+                      <img src="/house.jpg" alt="Product Image" style={{ padding: "50px" }} />
+                    </div>
+                  </div>
                     <h2>From the Designer</h2>
                 </div>
                 <div style={{ marginLeft: "10px" }}>
