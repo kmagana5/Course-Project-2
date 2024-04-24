@@ -12,7 +12,8 @@ import PageFramework from "./pages/framework";
 import ProductPage from "./pages/productpage";
 import StructureSelectionPage from "./pages/structureselectionpage";
 import Structure from "./pages/structure";
-
+import OrdersPage from "./pages/OrdersPage";
+// import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
     return (
@@ -43,6 +44,14 @@ function App() {
                     path="/structure/:structure_id"
                     element={<PageFramework component={<Structure />} />}
                 />
+                {/* <Route
+                    path="/checkout"
+                    element={<CheckoutPage cartItems={cartItems} setCurrentPage={setCurrentPage} />}
+                /> */}
+                <Route
+                        path="/orders"
+                        element={<PageFramework component={<OrdersPage />} />} // Pass setCurrentPage function to OrdersPage
+                    />
             </Routes>
         </Router>
     );
