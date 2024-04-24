@@ -47,6 +47,51 @@ const ProductPage = () => {
         }
       };
 
+    const imgContElm = document.querySelector(".container");
+    const imgElm = document.querySelector(".img-container img");
+
+    imgElm.addEventListener('mousemove', function(){
+      const zoom = 200;
+      imgElm.style.width = zoom + '%';
+    });
+
+    imgElm.addEventListener('mouseleave', function(){
+      //Event Mouse Leave
+      imgElm.style.width = '80%';
+      imgElm.style.top = '0';
+      imgElm.style.left = '0';
+    });
+          
+    imgElm.addEventListener('mousemove', function(mouseEvent){
+      let obj = imgContElm;
+      let obj_left = 0;
+      let obj_top = 0;
+      let xpos;
+      let ypos;
+
+      while(obj.offsetParent){
+        obj_left += obj.offsetLeft;
+        obj_top += obj.offsetTop;
+        obj = obj.offsetParent;
+      }
+      if(mouseEvent){
+        xpos = mouseEvent.pageX;
+        ypos = mouseEvent.pageY; 
+      }
+      else {
+          xpos = window.x + document.body.scrollLeft - 2;
+          ypos = window.y + document.body.scrollTop - 2;
+      }
+      xpos -= obj_left;
+      ypos -= obj_top;
+      const imgWidth = imgElm.clientWidth;
+      const imgHeight = imgElm.clientHeight;
+
+      imgElm.style.top = -(((imgHeight - this.clientHeight) * ypos) / this.clientHeight) + 'px';
+      imgElm.style.left = -(((imgHeight - this.clientHeight) * xpos) / this.clientHeight) + 'px';
+        
+    });
+
     function onSubmit() {
 
         const convertQuantity = parseInt(quantity,10);
@@ -71,62 +116,6 @@ const ProductPage = () => {
                 setTimeout(() => setShowNotification(false), 3000); // Hide notification after 3 seconds
             });
     }
-
-    function onHover() {
-        const imgContElm = document.querySelector(".container");
-        const imgElm = document.querySelector(".img-container img");
-
-        if(imgContElm && imgElm)
-        {
-          const zoom = 200;
-
-          //Event Mouse Enter
-          imgContElm.addEventListener('mouseenter', function(){
-            imgElm.style.width = zoom + '%';
-          });
-      
-          //Event Mouse Leave
-          imgContElm.addEventListener('mouseleave', function(){
-            imgElm.style.width = '80%';
-            imgElm.style.top = '0';
-            imgElm.style.left = '0';
-          });
-
-          imgContElm.addEventListener('mousemove', function(mouseEvent){
-            let obj = imgContElm;
-            let obj_left = 0;
-            let obj_top = 0;
-            let xpos;
-            let ypos;
-
-            while(obj.offsetParent){
-              obj_left += obj.offsetLeft;
-              obj_top += obj.offsetTop;
-              obj = obj.offsetParent;
-            }
-            if(mouseEvent){
-              xpos = mouseEvent.pageX;
-              ypos = mouseEvent.pageY; 
-            }
-            else {
-              xpos = window.x + document.body.scrollLeft - 2;
-              ypos = window.y + document.body.scrollTop - 2;
-            }
-            xpos -= obj_left;
-            ypos -= obj_top;
-            const imgWidth = imgElm.clientWidth;
-            const imgHeight = imgElm.clientHeight;
-
-            imgElm.style.top = -(((imgHeight - this.clientHeight) * ypos) / this.clientHeight) + 'px';
-            imgElm.style.left = -(((imgHeight - this.clientHeight) * xpos) / this.clientHeight) + 'px';
-          });   
-
-        }
-        else{
-          console.error("One or both of the elements not found.");
-        }
-    }
-    onHover();
     
 
     return (
