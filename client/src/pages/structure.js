@@ -72,7 +72,7 @@ const Structure = () => {
             .then(res => {
                 console.log(res.data);
                 setShowNotification(true); 
-                setTimeout(() => setShowNotification(false), 3000); // Hide notification after 3 seconds
+                setTimeout(() => setShowNotification(false), 7000); // Hide notification after 3 seconds
             });
     }
     useEffect(() => {
@@ -180,7 +180,12 @@ const Structure = () => {
 
             {showNotification && (
                 <div className="notification">
-                    Item added to cart!
+<h2>Item added to cart!</h2>
+
+      <span class="item-name">Item Name: { structure.structure_name }</span>
+      <span class="item-quantity">Quantity: {quantity}</span>
+      <span class="item-subtotal">Subtotal: ${structure.price * quantity}</span>
+    
                 </div>
             )}
         </div>

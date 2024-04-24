@@ -69,7 +69,7 @@ const ProductPage = () => {
             .then(res => {
                 console.log(res.data);
                 setShowNotification(true); 
-                setTimeout(() => setShowNotification(false), 3000); // Hide notification after 3 seconds
+                setTimeout(() => setShowNotification(false), 10000); // Hide notification after 3 seconds
             });
     }
 
@@ -127,7 +127,9 @@ const ProductPage = () => {
 
             {showNotification && (
                 <div className="notification">
-                    Item added to cart!
+                    Item(s) added to cart!
+                    
+
                 </div>
             )}
         </div>

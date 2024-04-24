@@ -15,16 +15,38 @@
   .button:hover {
     background-color: gray; 
   }
+
   .notification {
-    position: fixed;
-    top: 20px;
+    position: absolute;
+    bottom: 600px;
     right: 20px;
     background-color: #4CAF50;
     color: white;
     padding: 15px;
+   
     border-radius: 5px;
-    z-index: 9999;
+    z-index: 99999999;
   }
+  
+  
+  
+  .notification .item-info {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .notification .item-name {
+    text-decoration: underline;
+  }
+  
+  .notification .item-quantity {
+    margin-left: 10px;
+  }
+  
+  .notification .item-subtotal {
+    margin-left: 10px;
+  }
+  
 
   .pricetag {
     font-weight: bolder;
