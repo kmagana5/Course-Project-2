@@ -3,6 +3,7 @@ import Rating from "../components/Rating";
 import "../styles/Rating.css";
 import ScrollMenu from "../components/ScrollMenu";
 import "../styles/ScrollMenu.css";
+import ReactImageMagnify from 'react-image-magnify';
 import axios from 'axios';
 
 const ProductPage = () => {
@@ -47,7 +48,6 @@ const ProductPage = () => {
       };
 
     function onSubmit() {
-      
 
         const convertQuantity = parseInt(quantity,10);
         const convertBed = parseInt(bed,10);
@@ -64,7 +64,6 @@ const ProductPage = () => {
         };
         console.log(cart);
 
-
         axios.post('http://localhost:5000/addCart/add', cart)
             .then(res => {
                 console.log(res.data);
@@ -72,13 +71,25 @@ const ProductPage = () => {
                 setTimeout(() => setShowNotification(false), 10000); // Hide notification after 3 seconds
             });
     }
+    
 
     return (
         <div style={{ marginLeft: "10px" }}>
             <h1>ProductPage</h1>
             <div style={{ display: "flex", flexDirection: "row" }}>
                 <div>
-                    <img src="/house.jpg" alt="Product Image" style={{ padding: "50px" }} />
+                  <ReactImageMagnify {...{
+                    smallImage: {
+                      alt: "Product Image",
+                      isFluidWidth: true,
+                      src: "/house.jpg"
+                    },
+                    largeImage: {
+                      src: "/house1200.jpg",
+                      width: 1200,
+                      height: 1800
+                      }
+                    }} />
                     <h2>From the Designer</h2>
                 </div>
                 <div style={{ marginLeft: "10px" }}>
@@ -119,7 +130,7 @@ const ProductPage = () => {
                 <h2>Compatible 3D Printers</h2>
             </div>
             <div style={{ display: "flex" }}>
-                <div style={{ width: "25%" }}>
+                <div style={{ width: "50%" }}>
                     <h2>Virtual Walkthrough</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo eu diam sit amet semper. In aliquam faucibus sem, sed vestibulum nunc rhoncus a. In fringilla magna sit amet consequat congue. Mauris quis maximus eros. Aenean ultricies enim eu quam consequat tincidunt. Praesent luctus blandit quam nec condimentum. Suspendisse fermentum libero nulla, id mollis urna commodo quis. Donec velit nunc, semper et porttitor nec, feugiat in felis.</p>
                 </div>
