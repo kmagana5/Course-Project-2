@@ -4,6 +4,7 @@ import "../styles/Rating.css";
 import ScrollMenu from "../components/ScrollMenu";
 import "../styles/ScrollMenu.css";
 import "../styles/Zoom.css"
+import ReactImageMagnify from 'react-image-magnify';
 import axios from 'axios';
 
 const ProductPage = () => {
@@ -128,6 +129,18 @@ const ProductPage = () => {
                       <img src="/house.jpg" alt="Product Image" style={{ padding: "50px" }} />
                     </div>
                   </div>
+                  <ReactImageMagnify {...{
+                    smallImage: {
+                      alt: "Product Image",
+                      isFluidWidth: true,
+                      src: "/house.jpg"
+                    },
+                    largeImage: {
+                      src: "/house1200.jpg",
+                      width: 1200,
+                      height: 1800
+                      }
+                    }} />
                     <h2>From the Designer</h2>
                 </div>
                 <div style={{ marginLeft: "10px" }}>
