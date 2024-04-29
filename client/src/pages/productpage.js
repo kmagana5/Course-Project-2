@@ -3,7 +3,6 @@ import Rating from "../components/Rating";
 import "../styles/Rating.css";
 import ScrollMenu from "../components/ScrollMenu";
 import "../styles/ScrollMenu.css";
-import "../styles/Zoom.css"
 import ReactImageMagnify from 'react-image-magnify';
 import axios from 'axios';
 
@@ -47,7 +46,7 @@ const ProductPage = () => {
           setBed(prevNumber => prevNumber - 1);
         }
       };
-      
+
     function onSubmit() {
 
         const convertQuantity = parseInt(quantity,10);
@@ -79,11 +78,6 @@ const ProductPage = () => {
             <h1>ProductPage</h1>
             <div style={{ display: "flex", flexDirection: "row" }}>
                 <div>
-                  <div className="container">
-                    <div className="img-container">
-                      <img src="/house.jpg" alt="Product Image" style={{ padding: "50px" }} />
-                    </div>
-                  </div>
                   <ReactImageMagnify {...{
                     smallImage: {
                       alt: "Product Image",
