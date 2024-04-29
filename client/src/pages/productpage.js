@@ -130,14 +130,10 @@ const ProductPage = () => {
                 <h2>Compatible 3D Printers</h2>
             </div>
             <div style={{ display: "flex" }}>
-                <div style={{ width: "25%" }}>
+                <div style={{ width: "50%" }}>
                     <h2>Virtual Walkthrough</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo eu diam sit amet semper. In aliquam faucibus sem, sed vestibulum nunc rhoncus a. In fringilla magna sit amet consequat congue. Mauris quis maximus eros. Aenean ultricies enim eu quam consequat tincidunt. Praesent luctus blandit quam nec condimentum. Suspendisse fermentum libero nulla, id mollis urna commodo quis. Donec velit nunc, semper et porttitor nec, feugiat in felis.</p>
                 </div>
-            </div>
-            <div style={{display: "flex", flexDirection: "row"}}>
-              <h2>SIMILAR PRODUCTS</h2>
-              <script src="Test.js"></script>
             </div>
 
             {showNotification && (
